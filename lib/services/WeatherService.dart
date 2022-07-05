@@ -4,7 +4,7 @@ import 'package:WeatherApp/models/Weather.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherService {
-  static String _apiKey = "";
+  static String _apiKey = "878a00a0d32c6c1358238dbc5cd1efce";
 
   static Future<Weather> fetchCurrentWeather({query, String lat = "", String lon =""}) async {
     var url =
