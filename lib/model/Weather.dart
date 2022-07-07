@@ -12,6 +12,7 @@ class Weather {
       this.description,
       this.time});
 
+
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
         cityName: json['name'],
