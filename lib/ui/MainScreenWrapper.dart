@@ -34,7 +34,6 @@ class MainScreenWrapper extends StatelessWidget {
           iconScale: 1,
         ),
         // Text(
-        //     '${weather.description}'),
 
         Spacer(),
 

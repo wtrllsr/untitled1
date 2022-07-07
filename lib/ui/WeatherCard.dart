@@ -14,13 +14,11 @@ class WeatherCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        // Добавляем отступы
         padding: EdgeInsets.all(8),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Выровним по центру
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               Image.network("http://openweathermap.org/img/wn/${this.iconCode}@2x.png", scale: this.iconScale),
               Text(this.title),
               Text('${this.description}'),

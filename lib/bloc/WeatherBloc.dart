@@ -7,13 +7,13 @@ import 'package:WeatherApp/status/WeatherStatus.dart';
 import 'package:bloc/bloc.dart';
 import 'package:geolocator/geolocator.dart';
 
-class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
+class WeatherBloc extends Bloc<WeatherEvent, WeatherStatus> {
   WeatherBloc() : super(null) {
     add(WeatherCurrentPositionRequested());
   }
 
   @override
-  Stream<WeatherState> mapEventToState(WeatherEvent event) async* {
+  Stream<WeatherStatus> mapEventToState(WeatherEvent event) async* {
     if (event is WeatherRequested) {
       yield* _newWeatherRequested(event);
     }
@@ -22,7 +22,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     }
   }
 
-  Stream<WeatherState> _newWeatherRequested(WeatherRequested event) async* {
+  Stream<WeatherStatus> _newWeatherRequested(WeatherRequested event) async* {
     yield WeatherLoadInProgress();
     try {
       final Weather weather = await WeatherAPI.fetchCurrentWeather(
@@ -36,7 +36,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     }
   }
 
-  Stream<WeatherState> _newWeatherCurrentPositionRequested() async* {
+  Stream<WeatherStatus> _newWeatherCurrentPositionRequested() async* {
     LocationPermission permission = await checkPermission();
     if (permission == LocationPermission.whileInUse ||
         permission == LocationPermission.always) {

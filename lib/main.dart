@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => WeatherBloc(),
-      child: BlocBuilder<WeatherBloc, WeatherState>(
+      child: BlocBuilder<WeatherBloc, WeatherStatus>(
         builder: (context, state) {
           if (state is WeatherLoadSuccess) {
             return Scaffold(

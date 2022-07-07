@@ -2,18 +2,18 @@ import 'package:WeatherApp/model/Weather.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-abstract class WeatherState extends Equatable {
-  const WeatherState();
+abstract class WeatherStatus extends Equatable {
+  const WeatherStatus();
 
   @override
   List<Object> get props => [];
 }
 
-class WeatherInitial extends WeatherState {}
+class WeatherInitial extends WeatherStatus {}
 
-class WeatherLoadInProgress extends WeatherState {}
+class WeatherLoadInProgress extends WeatherStatus {}
 
-class WeatherLoadSuccess extends WeatherState {
+class WeatherLoadSuccess extends WeatherStatus {
   final Weather weather;
   final List<Weather> hourlyWeather;
 
@@ -25,4 +25,4 @@ class WeatherLoadSuccess extends WeatherState {
   List<Object> get props => [weather, hourlyWeather];
 }
 
-class WeatherLoadFailure extends WeatherState {}
+class WeatherLoadFailure extends WeatherStatus {}
