@@ -1,4 +1,4 @@
-import 'package:WeatherApp/models/Weather.dart';
+import 'package:WeatherApp/model/Weather.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 

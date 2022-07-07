@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:WeatherApp/events/WeatherEvent.dart';
-import 'package:WeatherApp/models/Weather.dart';
-import 'package:WeatherApp/services/WeatherService.dart';
-import 'package:WeatherApp/states/WeatherState.dart';
+import 'package:WeatherApp/event/WeatherEvent.dart';
+import 'package:WeatherApp/model/Weather.dart';
+import 'package:WeatherApp/weatherAPI/WeatherApi.dart';
+import 'package:WeatherApp/status/WeatherStatus.dart';
 import 'package:bloc/bloc.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -25,10 +25,10 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   Stream<WeatherState> _newWeatherRequested(WeatherRequested event) async* {
     yield WeatherLoadInProgress();
     try {
-      final Weather weather = await WeatherService.fetchCurrentWeather(
+      final Weather weather = await WeatherAPI.fetchCurrentWeather(
           query: event.city, lon: event.lon, lat: event.lat);
       final List<Weather> hourlyWeather =
-          await WeatherService.fetchHourlyWeather(
+          await WeatherAPI.fetchHourlyWeather(
               query: event.city, lon: event.lon, lat: event.lat);
       yield WeatherLoadSuccess(weather: weather, hourlyWeather: hourlyWeather);
     } catch (e) {

@@ -1,4 +1,4 @@
-import 'package:WeatherApp/components/WeatherHours.dart';
+import 'package:WeatherApp/ui/WeatherHours.dart';
 import 'package:WeatherApp/model/Weather.dart';
 import 'package:flutter/widgets.dart';
 
