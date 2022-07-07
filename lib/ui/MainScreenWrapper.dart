@@ -1,5 +1,5 @@
 import 'package:WeatherApp/components/WeatherHours.dart';
-import 'package:WeatherApp/models/Weather.dart';
+import 'package:WeatherApp/model/Weather.dart';
 import 'package:flutter/widgets.dart';
 
 import 'WeatherCard.dart';
@@ -14,22 +14,30 @@ class MainScreenWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(image: NetworkImage('https://kartinkin.net/uploads/posts/2021-07/1626958209_21-kartinkin-com-p-bezhevie-oblaka-fon-krasivo-23.png'),
+          fit: BoxFit.fill,
+        ),
+      ),
       child: Column(children: [
+
         Text(
           weather.cityName,
           style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
         ),
-        Text(
-            '${weather.description}'),
-        Spacer(),
         WeatherCard(
-          title: "Now",
+          title: "Today",
           temperature: weather.temperature,
           iconCode: weather.iconCode,
-          temperatureFontSize: 64,
+          description: weather.description,
+          temperatureFontSize: 48,
           iconScale: 1,
         ),
+        // Text(
+        //     '${weather.description}'),
+
         Spacer(),
+
         HourlyWeather(hourlyWeather: this.hourlyWeather)
       ]),
     );
